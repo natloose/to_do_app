@@ -7,22 +7,23 @@
     <title>Main</title>
 </head>
 <body>
-<div class="text-center">
-
-    <form action="add" method="post">
-        {% csrf_token %}
-        <input type="text" name="todo" placeholder="To Do">
-        <button type="Submit" class="btn btn-success">Add</button>
-    </form>
-
+<div class="container">
+    <div class="text-center pt-5">
+         <form action="add" method="post">
+            {% csrf_token %}
+            <input type="text" name="todo" placeholder="To Do">
+            <button type="Submit" class="btn btn-success">Add</button>
+        </form>
+    </div>
+    <div class="text-center">
         {% csrf_token %}
         {% for i in all %}
+        <form class="pt-2" action="delete_todo/{{ i }}" action="post">
             {{i}}
-            <form action="delete_todo/{{ i }}" action="post">
             <button type="Submit" class="btn btn-warning">Del</button>
-            </form>
-
+        </form>
         {% endfor %}
+    </div>
 </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
